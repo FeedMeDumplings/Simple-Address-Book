@@ -1,0 +1,297 @@
+﻿namespace Asg_01
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.txtFirst = new System.Windows.Forms.TextBox();
+            this.txtLast = new System.Windows.Forms.TextBox();
+            this.txtStreet = new System.Windows.Forms.TextBox();
+            this.txtZip = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.gbAddInfo = new System.Windows.Forms.GroupBox();
+            this.dgContact = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.statUpdate = new System.Windows.Forms.StatusStrip();
+            this.lblUpdate = new System.Windows.Forms.ToolStripStatusLabel();
+            this.errZip = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPhone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClear = new System.Windows.Forms.Button();
+            this.gbAddInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgContact)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.statUpdate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errZip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPhone)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // txtFirst
+            // 
+            this.txtFirst.Location = new System.Drawing.Point(95, 24);
+            this.txtFirst.Name = "txtFirst";
+            this.txtFirst.Size = new System.Drawing.Size(166, 20);
+            this.txtFirst.TabIndex = 1;
+            // 
+            // txtLast
+            // 
+            this.txtLast.Location = new System.Drawing.Point(95, 50);
+            this.txtLast.Name = "txtLast";
+            this.txtLast.Size = new System.Drawing.Size(166, 20);
+            this.txtLast.TabIndex = 2;
+            // 
+            // txtStreet
+            // 
+            this.txtStreet.Location = new System.Drawing.Point(95, 76);
+            this.txtStreet.Name = "txtStreet";
+            this.txtStreet.Size = new System.Drawing.Size(166, 20);
+            this.txtStreet.TabIndex = 3;
+            // 
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(95, 102);
+            this.txtZip.MaxLength = 5;
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(166, 20);
+            this.txtZip.TabIndex = 4;
+            this.txtZip.TextChanged += new System.EventHandler(this.txtZip_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "First Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Last Name:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Street:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Zip:";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(95, 128);
+            this.txtPhone.MaxLength = 10;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(166, 20);
+            this.txtPhone.TabIndex = 5;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Phone #:";
+            // 
+            // gbAddInfo
+            // 
+            this.gbAddInfo.Controls.Add(this.label1);
+            this.gbAddInfo.Controls.Add(this.label5);
+            this.gbAddInfo.Controls.Add(this.txtFirst);
+            this.gbAddInfo.Controls.Add(this.txtPhone);
+            this.gbAddInfo.Controls.Add(this.txtLast);
+            this.gbAddInfo.Controls.Add(this.label4);
+            this.gbAddInfo.Controls.Add(this.txtStreet);
+            this.gbAddInfo.Controls.Add(this.label3);
+            this.gbAddInfo.Controls.Add(this.txtZip);
+            this.gbAddInfo.Controls.Add(this.label2);
+            this.gbAddInfo.Location = new System.Drawing.Point(12, 12);
+            this.gbAddInfo.Name = "gbAddInfo";
+            this.gbAddInfo.Size = new System.Drawing.Size(289, 169);
+            this.gbAddInfo.TabIndex = 0;
+            this.gbAddInfo.TabStop = false;
+            this.gbAddInfo.Text = "Add Information";
+            // 
+            // dgContact
+            // 
+            this.dgContact.AllowUserToAddRows = false;
+            this.dgContact.AllowUserToDeleteRows = false;
+            this.dgContact.AllowUserToResizeRows = false;
+            this.dgContact.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgContact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgContact.Location = new System.Drawing.Point(8, 21);
+            this.dgContact.MultiSelect = false;
+            this.dgContact.Name = "dgContact";
+            this.dgContact.ReadOnly = true;
+            this.dgContact.RowHeadersVisible = false;
+            this.dgContact.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgContact.Size = new System.Drawing.Size(498, 174);
+            this.dgContact.TabIndex = 15;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgContact);
+            this.groupBox2.Location = new System.Drawing.Point(322, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(8);
+            this.groupBox2.Size = new System.Drawing.Size(514, 203);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Contact Information";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(16, 192);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 11;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(122, 192);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 12;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // statUpdate
+            // 
+            this.statUpdate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblUpdate});
+            this.statUpdate.Location = new System.Drawing.Point(0, 232);
+            this.statUpdate.Name = "statUpdate";
+            this.statUpdate.Size = new System.Drawing.Size(848, 22);
+            this.statUpdate.TabIndex = 14;
+            // 
+            // lblUpdate
+            // 
+            this.lblUpdate.Name = "lblUpdate";
+            this.lblUpdate.Size = new System.Drawing.Size(210, 17);
+            this.lblUpdate.Text = "Add Contact or Load Existing Contacts";
+            // 
+            // errZip
+            // 
+            this.errZip.ContainerControl = this;
+            // 
+            // errPhone
+            // 
+            this.errPhone.ContainerControl = this;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(226, 192);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(848, 254);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.statUpdate);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbAddInfo);
+            this.Name = "Form1";
+            this.Text = "Address Book";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.gbAddInfo.ResumeLayout(false);
+            this.gbAddInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgContact)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.statUpdate.ResumeLayout(false);
+            this.statUpdate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errZip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPhone)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox txtFirst;
+        private System.Windows.Forms.TextBox txtLast;
+        private System.Windows.Forms.TextBox txtStreet;
+        private System.Windows.Forms.TextBox txtZip;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox gbAddInfo;
+        private System.Windows.Forms.DataGridView dgContact;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.StatusStrip statUpdate;
+        private System.Windows.Forms.ToolStripStatusLabel lblUpdate;
+        private System.Windows.Forms.ErrorProvider errZip;
+        private System.Windows.Forms.ErrorProvider errPhone;
+        private System.Windows.Forms.Button btnClear;
+    }
+}
+
