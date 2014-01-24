@@ -40,6 +40,7 @@
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.gbAddInfo = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.dgContact = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -48,13 +49,22 @@
             this.lblUpdate = new System.Windows.Forms.ToolStripStatusLabel();
             this.errZip = new System.Windows.Forms.ErrorProvider(this.components);
             this.errPhone = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnClear = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.gbXml = new System.Windows.Forms.GroupBox();
+            this.gbOpt = new System.Windows.Forms.GroupBox();
+            this.rbText = new System.Windows.Forms.RadioButton();
+            this.rbXml = new System.Windows.Forms.RadioButton();
+            this.gbText = new System.Windows.Forms.GroupBox();
             this.gbAddInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContact)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.statUpdate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errZip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPhone)).BeginInit();
+            this.gbXml.SuspendLayout();
+            this.gbOpt.SuspendLayout();
+            this.gbText.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFirst
@@ -145,6 +155,7 @@
             // 
             this.gbAddInfo.Controls.Add(this.label1);
             this.gbAddInfo.Controls.Add(this.label5);
+            this.gbAddInfo.Controls.Add(this.btnClear);
             this.gbAddInfo.Controls.Add(this.txtFirst);
             this.gbAddInfo.Controls.Add(this.txtPhone);
             this.gbAddInfo.Controls.Add(this.txtLast);
@@ -155,10 +166,20 @@
             this.gbAddInfo.Controls.Add(this.label2);
             this.gbAddInfo.Location = new System.Drawing.Point(12, 12);
             this.gbAddInfo.Name = "gbAddInfo";
-            this.gbAddInfo.Size = new System.Drawing.Size(289, 169);
+            this.gbAddInfo.Size = new System.Drawing.Size(289, 187);
             this.gbAddInfo.TabIndex = 0;
             this.gbAddInfo.TabStop = false;
             this.gbAddInfo.Text = "Add Information";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(95, 158);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // dgContact
             // 
@@ -176,25 +197,25 @@
             this.dgContact.RowHeadersVisible = false;
             this.dgContact.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgContact.Size = new System.Drawing.Size(498, 174);
-            this.dgContact.TabIndex = 15;
+            this.dgContact.Size = new System.Drawing.Size(496, 227);
+            this.dgContact.TabIndex = 17;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgContact);
-            this.groupBox2.Location = new System.Drawing.Point(322, 12);
+            this.groupBox2.Location = new System.Drawing.Point(327, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(8);
-            this.groupBox2.Size = new System.Drawing.Size(514, 203);
-            this.groupBox2.TabIndex = 14;
+            this.groupBox2.Size = new System.Drawing.Size(512, 256);
+            this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contact Information";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(16, 192);
+            this.btnAdd.Location = new System.Drawing.Point(6, 19);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(75, 33);
             this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -202,9 +223,9 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(122, 192);
+            this.btnLoad.Location = new System.Drawing.Point(86, 19);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.Size = new System.Drawing.Size(75, 33);
             this.btnLoad.TabIndex = 12;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -214,9 +235,9 @@
             // 
             this.statUpdate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblUpdate});
-            this.statUpdate.Location = new System.Drawing.Point(0, 232);
+            this.statUpdate.Location = new System.Drawing.Point(0, 280);
             this.statUpdate.Name = "statUpdate";
-            this.statUpdate.Size = new System.Drawing.Size(848, 22);
+            this.statUpdate.Size = new System.Drawing.Size(846, 22);
             this.statUpdate.TabIndex = 14;
             // 
             // lblUpdate
@@ -233,27 +254,96 @@
             // 
             this.errPhone.ContainerControl = this;
             // 
-            // btnClear
+            // button1
             // 
-            this.btnClear.Location = new System.Drawing.Point(226, 192);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 13;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.button1.Location = new System.Drawing.Point(6, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 33);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Add";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(86, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 33);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Load";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnLoadText_Click);
+            // 
+            // gbXml
+            // 
+            this.gbXml.Controls.Add(this.btnLoad);
+            this.gbXml.Controls.Add(this.btnAdd);
+            this.gbXml.Location = new System.Drawing.Point(88, 205);
+            this.gbXml.Name = "gbXml";
+            this.gbXml.Size = new System.Drawing.Size(170, 63);
+            this.gbXml.TabIndex = 10;
+            this.gbXml.TabStop = false;
+            this.gbXml.Text = "XML File";
+            // 
+            // gbOpt
+            // 
+            this.gbOpt.Controls.Add(this.rbText);
+            this.gbOpt.Controls.Add(this.rbXml);
+            this.gbOpt.Location = new System.Drawing.Point(12, 205);
+            this.gbOpt.Name = "gbOpt";
+            this.gbOpt.Size = new System.Drawing.Size(70, 63);
+            this.gbOpt.TabIndex = 7;
+            this.gbOpt.TabStop = false;
+            this.gbOpt.Text = "OPTIONS";
+            // 
+            // rbText
+            // 
+            this.rbText.AutoSize = true;
+            this.rbText.Location = new System.Drawing.Point(6, 42);
+            this.rbText.Name = "rbText";
+            this.rbText.Size = new System.Drawing.Size(53, 17);
+            this.rbText.TabIndex = 9;
+            this.rbText.Text = "TEXT";
+            this.rbText.UseVisualStyleBackColor = true;
+            this.rbText.CheckedChanged += new System.EventHandler(this.rbText_CheckedChanged);
+            // 
+            // rbXml
+            // 
+            this.rbXml.AutoSize = true;
+            this.rbXml.Checked = true;
+            this.rbXml.Location = new System.Drawing.Point(6, 19);
+            this.rbXml.Name = "rbXml";
+            this.rbXml.Size = new System.Drawing.Size(47, 17);
+            this.rbXml.TabIndex = 8;
+            this.rbXml.TabStop = true;
+            this.rbXml.Text = "XML";
+            this.rbXml.UseVisualStyleBackColor = true;
+            this.rbXml.CheckedChanged += new System.EventHandler(this.rbXml_CheckedChanged);
+            // 
+            // gbText
+            // 
+            this.gbText.Controls.Add(this.button1);
+            this.gbText.Controls.Add(this.button2);
+            this.gbText.Location = new System.Drawing.Point(88, 205);
+            this.gbText.Name = "gbText";
+            this.gbText.Size = new System.Drawing.Size(170, 63);
+            this.gbText.TabIndex = 13;
+            this.gbText.TabStop = false;
+            this.gbText.Text = "TEXT File";
+            this.gbText.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 254);
-            this.Controls.Add(this.btnClear);
+            this.ClientSize = new System.Drawing.Size(846, 302);
+            this.Controls.Add(this.gbText);
+            this.Controls.Add(this.gbOpt);
+            this.Controls.Add(this.gbXml);
             this.Controls.Add(this.statUpdate);
-            this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbAddInfo);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Address Book";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -265,6 +355,10 @@
             this.statUpdate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errZip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPhone)).EndInit();
+            this.gbXml.ResumeLayout(false);
+            this.gbOpt.ResumeLayout(false);
+            this.gbOpt.PerformLayout();
+            this.gbText.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,6 +386,13 @@
         private System.Windows.Forms.ErrorProvider errZip;
         private System.Windows.Forms.ErrorProvider errPhone;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox gbOpt;
+        private System.Windows.Forms.RadioButton rbText;
+        private System.Windows.Forms.RadioButton rbXml;
+        private System.Windows.Forms.GroupBox gbXml;
+        private System.Windows.Forms.GroupBox gbText;
     }
 }
 
