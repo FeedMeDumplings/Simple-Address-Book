@@ -51,8 +51,8 @@ namespace Asg_01
         }
 
         /*creating linked list
-         * to hold input before writing to xml file
-         * to hold previous data from xml file before update
+         * to hold input before writing to file
+         * to hold previous data from file before update
          * */
         List<ContactInfo> userInfo = new List<ContactInfo>();
 
@@ -85,7 +85,7 @@ namespace Asg_01
             addInfo.Zip = txtZip.Text.ToString();
             addInfo.Phone = txtPhone.Text.ToString();
             
-            if (userInfo.Exists(item => item == addInfo))
+            if (userInfo.Exists(item => item.Phone == addInfo.Phone))
             {
                 lblUpdate.Text = "Contact already exist!";
             }
@@ -237,8 +237,6 @@ namespace Asg_01
 
             txtFirst.Focus();
             txtFirst.Select(0, 0);
-
-            //this.txtFirst.SelectionStart = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -250,7 +248,7 @@ namespace Asg_01
             addInfo.Zip = txtZip.Text.ToString();
             addInfo.Phone = txtPhone.Text.ToString();
 
-            if (userInfo.Exists(item => item == addInfo))
+            if (userInfo.Exists(item => item.Phone == addInfo.Phone))
             {
                 lblUpdate.Text = "Contact already exist!";
             }
@@ -315,7 +313,7 @@ namespace Asg_01
 
         private void rbXml_CheckedChanged(object sender, EventArgs e)
         {
-            //userInfo.Clear();
+            userInfo.Clear();
 
                 gbXml.Visible = true;
                 gbText.Visible = false;
@@ -354,23 +352,6 @@ namespace Asg_01
            {
                lblUpdate.Text = "File does not exist!";
             }
-        }
-
-        private void btnLoadText_Click(object sender, EventArgs e)
-        {
-            //Bindingsource encapsulates data source for a form 
-            BindingSource source = new BindingSource();
-            source.DataSource = userInfo;
-            dgContact.DataSource = source;
-
-            //labeling hearder for the table in gridview box
-            dgContact.Columns[0].HeaderText = "First Name";
-            dgContact.Columns[1].HeaderText = "Last Name";
-            dgContact.Columns[2].HeaderText = "Street";
-            dgContact.Columns[3].HeaderText = "Zip Code";
-            dgContact.Columns[4].HeaderText = "Phone #";
-
-            dgContact.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

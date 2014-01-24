@@ -272,7 +272,7 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Load";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnLoadText_Click);
+            this.button2.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // gbXml
             // 
