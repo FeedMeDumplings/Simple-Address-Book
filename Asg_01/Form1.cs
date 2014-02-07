@@ -1,10 +1,10 @@
 ﻿/*Zigmyal Wangchuk
- * Project: Assignment 1 [Address Book]
+ * Project: Assignment 3 [Address Book]
  * Purpose: Allows user to add and view contacts. Has certain restrictions:
  * 1. Zip has to be 5 digits
  * 2. Phone # has to be 10 digits
  * Language: C# [Windows Application]
- * Due Date: 1/23/2014 [5:30 pm]
+ * Due Date: 02/06/2014 [5:30 pm]
  */
 
 using System;
@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
+
+
 
 namespace Asg_01
 {
@@ -47,6 +49,7 @@ namespace Asg_01
             {
                 return Phone.GetHashCode();
             }
+
             
         }
 
@@ -67,11 +70,16 @@ namespace Asg_01
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            XmlSerializer serializer = new XmlSerializer(userInfo.GetType(), new XmlRootAttribute("users"));
-
-            using (FileStream stream = File.OpenRead("Userinfo.xml"))
+            RadioButton checker;
+            checker = rbXml;
+            if (checker.Checked == true)
             {
-                userInfo = (List<ContactInfo>)serializer.Deserialize(stream);
+                XmlSerializer serializer = new XmlSerializer(userInfo.GetType(), new XmlRootAttribute("users"));
+
+                using (FileStream stream = File.OpenRead("Userinfo.xml"))
+                {
+                    userInfo = (List<ContactInfo>)serializer.Deserialize(stream);
+                }
             }
         }
        
@@ -79,11 +87,7 @@ namespace Asg_01
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ContactInfo addInfo = new ContactInfo();
-            addInfo.firstName = txtFirst.Text.ToString();
-            addInfo.lastName = txtLast.Text.ToString();
-            addInfo.Street = txtStreet.Text.ToString();
-            addInfo.Zip = txtZip.Text.ToString();
-            addInfo.Phone = txtPhone.Text.ToString();
+            addingInfoToClass(addInfo, txtFirst, txtLast, txtStreet, txtZip, txtPhone);
             
             if (userInfo.Exists(item => item.Phone == addInfo.Phone))
             {
@@ -104,45 +108,30 @@ namespace Asg_01
                     /*using error provider feature to prompt
                      * for invalid data entry
                      */
-                    errZip.Clear();
-                    errPhone.Clear();
-                    errZip.SetError(txtZip, "Zip Code needs to be 5 digits! <eg. 05401>");
-                    errPhone.SetError(txtPhone, "Phone # should have 10 digits! <eg. 3109095509>");
+                    errorClearingZipAndPhone(errZip, errPhone);
+                    errorProviderZip(errZip, txtZip);
+                    errorProviderPhone(errPhone, txtPhone);
                 }
                 else if (addInfo.Zip.Length != 5)
                 {
-                    errZip.Clear();
-                    errPhone.Clear();
-                    errZip.SetError(txtZip, "Zip Code needs to be 5 digits! <eg. 05401>");
+                    errorClearingZipAndPhone(errZip, errPhone);
+                    errorProviderZip(errZip, txtZip);
                 }
                 else if (addInfo.Phone.Length != 10)
                 {
-                    errZip.Clear();
-                    errPhone.Clear();
-                    errPhone.SetError(txtPhone, "Phone # should have 10 digits! <eg. 3109095509>");
+                    errorClearingZipAndPhone(errZip, errPhone);
+                    errorProviderPhone(errPhone, txtPhone);
                 }
                 else
                 {
-                    userInfo.Add(addInfo);
-
-                    //need serializer to write input to xml file
-                    XmlSerializer writer = new XmlSerializer(userInfo.GetType(), new XmlRootAttribute("users"));
-
-                    using (StreamWriter file = new StreamWriter("Userinfo.xml"))
-                    {
-                        writer.Serialize(file.BaseStream, userInfo);
-                    }
+                    string xmlFileName = "Userinfo.xml";
+                    writeToXMLFile(userInfo, addInfo, xmlFileName);
 
                     //clearing all text fields and error prompts
-                    txtFirst.Clear();
-                    txtLast.Clear();
-                    txtStreet.Clear();
-                    txtZip.Clear();
-                    txtPhone.Clear();
+                    clearingTextBoxes();
 
                     lblUpdate.Text = "Contact added to address book!";
-                    errZip.Clear();
-                    errPhone.Clear();
+                    errorClearingZipAndPhone(errZip, errPhone);
                 }
             }    
         }
@@ -153,7 +142,12 @@ namespace Asg_01
             //Bindingsource encapsulates data source for a form 
             BindingSource source = new BindingSource();
             source.DataSource = userInfo;
+            
+            //To solve for exception error handling
+            
             dgContact.DataSource = source;
+            dgContact.ClearSelection();
+            dgContact.Refresh();
 
             //labeling hearder for the table in gridview box
             dgContact.Columns[0].HeaderText = "First Name";
@@ -229,11 +223,7 @@ namespace Asg_01
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtFirst.Clear();
-            txtLast.Clear();
-            txtStreet.Clear();
-            txtZip.Clear();
-            txtPhone.Clear();
+            clearingTextBoxes();
 
             txtFirst.Focus();
             txtFirst.Select(0, 0);
@@ -242,11 +232,7 @@ namespace Asg_01
         private void button1_Click(object sender, EventArgs e)
         {
             ContactInfo addInfo = new ContactInfo();
-            addInfo.firstName = txtFirst.Text.ToString();
-            addInfo.lastName = txtLast.Text.ToString();
-            addInfo.Street = txtStreet.Text.ToString();
-            addInfo.Zip = txtZip.Text.ToString();
-            addInfo.Phone = txtPhone.Text.ToString();
+            addingInfoToClass(addInfo, txtFirst, txtLast, txtStreet, txtZip, txtPhone);
 
             if (userInfo.Exists(item => item.Phone == addInfo.Phone))
             {
@@ -267,63 +253,50 @@ namespace Asg_01
                     /*using error provider feature to prompt
                      * for invalid data entry
                      */
-                    errZip.Clear();
-                    errPhone.Clear();
-                    errZip.SetError(txtZip, "Zip Code needs to be 5 digits! <eg. 05401>");
-                    errPhone.SetError(txtPhone, "Phone # should have 10 digits! <eg. 3109095509>");
+                    errorClearingZipAndPhone(errZip, errPhone);
+                    errorProviderZip(errZip, txtZip);
+                    errorProviderPhone(errPhone, txtPhone);
                 }
                 else if (addInfo.Zip.Length != 5)
                 {
-                    errZip.Clear();
-                    errPhone.Clear();
-                    errZip.SetError(txtZip, "Zip Code needs to be 5 digits! <eg. 05401>");
+                    errorClearingZipAndPhone(errZip, errPhone);
+                    errorProviderZip(errZip, txtZip);
                 }
                 else if (addInfo.Phone.Length != 10)
                 {
-                    errZip.Clear();
-                    errPhone.Clear();
-                    errPhone.SetError(txtPhone, "Phone # should have 10 digits! <eg. 3109095509>");
+                    errorClearingZipAndPhone(errZip, errPhone);
+                    errorProviderPhone(errPhone, txtPhone);
                 }
                 else
                 {
-                    userInfo.Add(addInfo);
-
-                    using (StreamWriter file = new StreamWriter("Userinfo.txt"))
-                    {
-                        foreach (ContactInfo x in userInfo)
-                        {
-                            string temp = x.firstName + "\t" + x.lastName + "\t" + x.Street + "\t" + x.Zip.ToString() + "\t" + x.Phone.ToString();
-                            file.WriteLine(temp);
-                        }
-                    }
+                    string txtFileName = "Userinfo.txt";
+                    writeToTextFile(userInfo, addInfo, txtFileName);
 
                     //clearing all text fields and error prompts
-                    txtFirst.Clear();
-                    txtLast.Clear();
-                    txtStreet.Clear();
-                    txtZip.Clear();
-                    txtPhone.Clear();
+                    clearingTextBoxes();
 
                     lblUpdate.Text = "Contact added to address book!";
-                    errZip.Clear();
-                    errPhone.Clear();
+                    errorClearingZipAndPhone(errZip, errPhone);
                 }
             }    
         }
 
+        //reading from xml
         private void rbXml_CheckedChanged(object sender, EventArgs e)
         {
             userInfo.Clear();
 
                 gbXml.Visible = true;
                 gbText.Visible = false;
+                string xmlfileName = "Userinfo.xml";
 
                 XmlSerializer serializer = new XmlSerializer(userInfo.GetType(), new XmlRootAttribute("users"));
 
-                using (FileStream stream = File.OpenRead("Userinfo.xml"))
+                using (FileStream stream = File.OpenRead(xmlfileName.ToString()))
                 {
                     userInfo = (List<ContactInfo>)serializer.Deserialize(stream);
                 }
+                
         }
 
         private void rbText_CheckedChanged(object sender, EventArgs e)
@@ -332,26 +305,105 @@ namespace Asg_01
 
             gbXml.Visible = false;
             gbText.Visible = true;
+            string textfilename = "Userinfo.txt";
 
+            readFromTextFile(userInfo, textfilename, lblUpdate);
+            
+        }
+
+        //writing to xml
+        private void writeToXMLFile(List<ContactInfo> uInfo, ContactInfo info, string fileName)
+        {
+            uInfo.Add(info);
+
+            //need serializer to write input to xml file
+            XmlSerializer writer = new XmlSerializer(uInfo.GetType(), new XmlRootAttribute("users"));
+
+            using (StreamWriter file = new StreamWriter(fileName))
+            {
+                writer.Serialize(file.BaseStream, uInfo);
+            }
+        }
+
+        //writing to text
+        private void writeToTextFile(List<ContactInfo> uInfo, ContactInfo info, string fileName)
+        {
+            uInfo.Add(info);
+
+            using (StreamWriter file = new StreamWriter(fileName))
+            {
+                foreach (ContactInfo x in uInfo)
+                {
+                    string temp = x.firstName + "\t" + x.lastName + "\t" + x.Street + "\t" + x.Zip.ToString() + "\t" + x.Phone.ToString();
+                    file.WriteLine(temp);
+                }
+            }
+
+        }
+
+        
+        private void addingInfoToClass(ContactInfo info, 
+                                        TextBox first, 
+                                        TextBox last, 
+                                        TextBox street, 
+                                        TextBox zip, 
+                                        TextBox phone)
+        {
+            info.firstName = first.Text.ToString();
+            info.lastName = last.Text.ToString();
+            info.Street = street.Text.ToString();
+            info.Zip = zip.Text.ToString();
+            info.Phone = phone.Text.ToString();
+        }
+
+        private void clearingTextBoxes()
+        {
+            txtFirst.Clear();
+            txtLast.Clear();
+            txtStreet.Clear();
+            txtZip.Clear();
+            txtPhone.Clear();
+        }
+
+
+        private void readFromTextFile(List<ContactInfo> uInfo, string fileName, ToolStripStatusLabel labelUpdate)
+        {
             try
             {
-                   foreach (var line in File.ReadAllLines("Userinfo.txt"))
-                   {
-                       var columns = line.Split('\t');
-                       userInfo.Add(new ContactInfo
-                       {
-                           firstName = columns[0],
-                           lastName = columns[1],
-                           Street = columns[2],
-                           Zip = columns[3],
-                           Phone = columns[4]
-                       });
-                   }
+                foreach (var line in File.ReadAllLines(fileName))
+                {
+                    var columns = line.Split('\t');
+                    uInfo.Add(new ContactInfo
+                    {
+                        firstName = columns[0],
+                        lastName = columns[1],
+                        Street = columns[2],
+                        Zip = columns[3],
+                        Phone = columns[4]
+                    });
+                }
             }
             catch
-           {
-               lblUpdate.Text = "File does not exist!";
+            {
+                labelUpdate.Text = "File does not exist!";
             }
+        }
+
+
+        private void errorProviderZip(ErrorProvider zip, TextBox textzip)
+        {
+            zip.SetError(textzip, "Zip Code needs to be 5 digits! <eg. 05401>");
+        }
+
+        private void errorProviderPhone(ErrorProvider phone, TextBox textphone)
+        {
+            phone.SetError(textphone, "Phone # should have 10 digits! <eg. 3109095509>");
+        }
+
+        private void errorClearingZipAndPhone(ErrorProvider zip, ErrorProvider phone)
+        {
+            zip.Clear();
+            phone.Clear();
         }
     }
 }
